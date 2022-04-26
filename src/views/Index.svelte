@@ -116,12 +116,8 @@
             </div>
             <div class="flex flex-wrap mt-6 relative">
               <div class="w-1/2">
-                <a
-                  href="#pablo"
-                  on:click={(e) => e.preventDefault()}
-                  class="text-blueGray-200"
-                >
-                  <small>Forgot password?</small>
+                <a use:link href="/auth/register2" class="text-blueGray-200">
+                  <small>Create new account</small>
                 </a>
               </div>
               <div class="w-1/2 text-right">
