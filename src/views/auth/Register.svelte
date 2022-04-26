@@ -1,4 +1,6 @@
 <script>
+  import { link } from "svelte-routing";
+
   // core components
   const github = "../assets/img/github.svg";
   const google = "../assets/img/google.svg";
@@ -7,6 +9,13 @@
 <div class="container mx-auto px-4 h-full">
   <div class="flex content-center items-center justify-center h-full">
     <div class="w-full lg:w-6/12 px-4">
+      <div class="flex flex-wrap mt-6 relative">
+        <div class="w-1/2">
+          <a use:link href="/" class="text-blueGray-200">
+            <p>↪ Return Page</p>
+          </a>
+        </div>
+      </div>
       <div
         class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
       >

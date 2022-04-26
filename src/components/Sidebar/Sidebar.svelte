@@ -1,6 +1,6 @@
 <script>
   import { link } from "svelte-routing";
-  const logo = "../assets/img/logo.png";
+  const logo = "../assets/img/dashboard-logo.jpg";
 
   // core components
   import NotificationDropdown from "components/Dropdowns/NotificationDropdown.svelte";

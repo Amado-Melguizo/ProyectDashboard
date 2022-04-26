@@ -9,10 +9,6 @@
   import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
   import FooterSmall from "components/Footers/FooterSmall.svelte";
 
-  // pages for this layout
-  import Login from "views/auth/Login.svelte";
-  import Register from "views/auth/Register.svelte";
-
   const registerBg2 = "../assets/img/register_bg_2.png";
 </script>
 
@@ -116,8 +112,8 @@
             </div>
             <div class="flex flex-wrap mt-6 relative">
               <div class="w-1/2">
-                <a use:link href="/auth/register2" class="text-blueGray-200">
-                  <small>Create new account</small>
+                <a use:link href="/auth/pasword" class="text-blueGray-200">
+                  <small>Forgot password?</small>
                 </a>
               </div>
               <div class="w-1/2 text-right">

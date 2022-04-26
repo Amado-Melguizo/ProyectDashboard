@@ -49,14 +49,14 @@ const indexTemplate = `<!--
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/request_icon.jpg" />
     <link rel="stylesheet" href="/build/bundle.css" />
     <link
       rel="stylesheet"
       href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
     />
     <link rel="stylesheet" href="/assets/styles/tailwind.css" />
-    <title>Notus Svelte</title>
+    <title>Request Dashboard</title>
 
     <script>
       if (process === undefined) {

@@ -1,11 +1,14 @@
 <script>
   // core components
+  export let id;
+
   export let type = null;
   export let team;
   // can be any of the text color utilities
   // from tailwindcss
   export let project;
   export let description;
+  export let state;
   export let statIconName;
   // can be any of the background color utilities
   // from tailwindcss
@@ -19,6 +22,7 @@
     <div class="flex flex-wrap">
       <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
         <span class="font-semibold text-xl text-blueGray-700">
+          {id}
           {type} - {project}
         </span>
         <h5 class="text-blueGray-400 uppercase font-bold text-xs">
@@ -34,7 +38,8 @@
       </div>
     </div>
     <p class="text-sm text-blueGray-400 mt-4">
-      <span class="font-semibold text-blueGray-700">Descrip: {description}</span
+      <span class="font-semibold text-blueGray-700"
+        >Descrip: {description} {state}</span
       >
     </p>
   </div>

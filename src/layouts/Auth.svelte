@@ -6,8 +6,8 @@
   import FooterSmall from "components/Footers/FooterSmall.svelte";
 
   // pages for this layout
-  import Login from "views/auth/Login.svelte";
   import Register from "views/auth/Register.svelte";
+  import Password from "views/auth/ForgotPassword.svelte";
 
   const registerBg2 = "../assets/img/register_bg_2.png";
 </script>
@@ -21,8 +21,8 @@
         style="background-image: url({registerBg2});"
       />
       <Router url="auth">
-        <Route path="login" component={Login} />
         <Route path="register" component={Register} />
+        <Route path="pasword" component={Password} />
       </Router>
       <FooterSmall absolute="true" />
     </section>
