@@ -1,7 +1,7 @@
 <script>
   // core components
   import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
-  import { selectedCards, allCardStats } from "../../store";
+  import { selectedCards, allCardStats, allTeams } from "../../store";
 
   let teams = [{ equipo: "Dev" }, { equipo: "AUX" }, { equipo: "UAT" }];
 
