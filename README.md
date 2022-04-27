@@ -64,7 +64,7 @@ The documentation for the Notus Svelte is hosted at our <a href="https://www.cre
 
 This is the project structure that you will get upon the download:
 ```
-Poyecto-Request-Notus
+Proyecto-Request-Notus
 .
 
 ```
