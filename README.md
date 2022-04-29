@@ -1,14 +1,14 @@
-# Request Dashboard Svelte 
+# Request Dashboard Svelte
 
 ## Table of Contents
 
-* [Get Started](#get-started)
-* [Pages](#pages)
-* [CSS Components](#css-components)
-* [Svelte Components](#svelte-components)
-* [Documentation](#documentation)
-* [Files and folder](#files-and-folder)
-* [Licensing](#licensing)
+- [Get Started](#get-started)
+- [Pages](#pages)
+- [CSS Components](#css-components)
+- [Svelte Components](#svelte-components)
+- [Documentation](#documentation)
+- [Files and folder](#files-and-folder)
+- [Licensing](#licensing)
 
 ## Get Started
 
@@ -22,7 +22,8 @@
 - (If not) Run in terminal `npm run build:tailwind` (each time you add a new class, a class that does not exist in `src/assets/styles/tailwind.css`, you will need to run this command)
 - (If not) Run in terminal `npm run build:fontawesome`
 - (If not) Run in terminal `npm run dev`
-- Navigate to https://localhost: [the number of the localhost selected from your VSCode]
+- Navigate to https://localhost:[the number of the localhost selected from your VSCode]
+
 
 ## Pages
 
@@ -32,7 +33,7 @@ Here are all the page from the project:
   - [Dashboard]
   - [Settings]
 - Authentication Samples
-  - [Forgot Password] 
+  - [Forgot Password]
   - [Login]
   - [Register]
 - Presentation Samples
@@ -48,6 +49,7 @@ Please [check all of them here](https://www.creative-tim.com/learning-lab/tailwi
 ## Svelte Components
 
 We also feature the following 18 dynamic components:
+
 - [Alerts](https://www.creative-tim.com/learning-lab/tailwind/svelte/alerts/notus?tws=twr-github-readme)
 - [Popper for Menus](https://www.creative-tim.com/learning-lab/tailwind/svelte/dropdowns/notus?tws=twr-github-readme)
 - [Menus](https://www.creative-tim.com/learning-lab/tailwind/svelte/menus/notus?ref=ns-github-readme)
@@ -58,11 +60,13 @@ We also feature the following 18 dynamic components:
 - [Popper for tooltips content](https://www.creative-tim.com/learning-lab/tailwind/svelte/tooltips/notus?ref=ns-github-readme)
 
 ## Documentation
+
 The documentation for the Notus Svelte is hosted at our <a href="https://www.creative-tim.com/learning-lab/tailwind/svelte/overview/notus?ref=ns-readme" target="_blank">website</a>.
 
 ## Files and Folder
 
 This is the project structure that you will get upon the download:
+
 ```
 Proyecto-Request-Notus
 .

@@ -1,18 +1,8 @@
 <script>
   // core components
   import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
-  import { selectedCards, allCardStats } from "../../store";
-
-  let teams = [{ equipo: "Dev" }, { equipo: "AUX" }, { equipo: "UAT" }];
-
-  let selected;
-  const filterByTeam = () => {
-    const team = selected.equipo;
-    const filtered = $allCardStats.filter(
-      (request) => request.team.toLowerCase() === team.toLowerCase()
-    );
-    $selectedCards = filtered;
-  };
+  import SelectedTeam from "../SelectedTeam/SelectedTeam.svelte";
+  import ReqMaker from "../ReqMaker/ReqMaker.svelte";
 </script>
 
 <!-- Navbar -->
@@ -26,19 +16,9 @@
     <h1 class="text-white text-xl">Dashboard</h1>
 
     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-      <!-- svelte-ignore a11y-no-onchange -->
-      <select
-        bind:value={selected}
-        on:change={() => {
-          filterByTeam();
-        }}
-        class="bg-indigo-500 text-white text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-      >
-        <option value={teams}>Equipo</option>
-        {#each teams as team}
-          <option value={team}>{team.equipo}</option>
-        {/each}
-      </select>
+      <SelectedTeam />
+      <!-- Boton para hacer saltar para crear nuevas Request -->
+      <ReqMaker />
     </div>
     <!-- Form -->
     <form

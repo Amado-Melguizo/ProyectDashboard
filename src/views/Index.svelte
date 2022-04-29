@@ -1,5 +1,4 @@
 <script>
-  import { Router, Route } from "svelte-routing";
   import { link } from "svelte-routing";
 
   // core components
@@ -28,9 +27,7 @@
             >
               <div class="rounded-t mb-0 px-6 py-6">
                 <div class="text-center mb-3">
-                  <h6 class="text-blueGray-500 text-sm font-bold">
-                    Sign in with
-                  </h6>
+                  <h6 class="text-blueGray-500 text-sm font-bold">Sign in</h6>
                 </div>
                 <div class="btn-wrapper text-center">
                   <button
@@ -84,21 +81,6 @@
                       placeholder="Password"
                     />
                   </div>
-                  <div>
-                    <label class="inline-flex items-center cursor-pointer">
-                      <input
-                        id="customCheckLogin"
-                        type="checkbox"
-                        class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
-                      />
-                      <span
-                        class="ml-2 text-sm font-semibold text-blueGray-600"
-                      >
-                        Remember me
-                      </span>
-                    </label>
-                  </div>
-
                   <div class="text-center mt-6">
                     <button
                       class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
@@ -125,7 +107,7 @@
           </div>
         </div>
       </div>
-      <FooterSmall absolute="true" />
     </section>
   </main>
+  <FooterSmall absolute="true" />
 </div>
