@@ -11,6 +11,11 @@ import { writable } from "svelte/store";
 //     console.error(error);
 //   }
 // };
+export const types = writable([
+  { type: "PRIO1" },
+  { type: "PRIO2" },
+  { type: "PRIO3" },
+]);
 export const allTeams = writable([
   { team: "Dev" },
   { team: "AUX" },
@@ -20,9 +25,10 @@ export const allTeams = writable([
 export const allCardStats = writable([]);
 
 export const selectedCards = writable([]);
+
 export const mock = writable([
   {
-    id: 1,
+    id: "1",
     type: "PRIO 1",
     team: "dev",
     project: "Incidencia",
@@ -30,7 +36,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: 2,
+    id: "2",
     type: "PRIO 1",
     team: "AUX",
     project: "Incidencia",
@@ -38,7 +44,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: 3,
+    id: "3",
     type: "PRIO 1",
     team: "Dev",
     project: "Incidencia",
@@ -46,7 +52,7 @@ export const mock = writable([
     state: true,
   },
   {
-    id: 4,
+    id: "4",
     type: "PRIO 1",
     team: "AUX",
     project: "Incidencia",
@@ -54,7 +60,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: 5,
+    id: "5",
     type: "PRIO 1",
     team: "UAT",
     project: "Incidencia",

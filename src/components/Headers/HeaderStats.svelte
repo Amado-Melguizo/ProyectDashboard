@@ -5,10 +5,24 @@
   import { onMount } from "svelte";
   import Counter from "../Counter/Counter.svelte";
   import Graph from "../Graph/Graph.svelte";
-
   function remove(req) {
     $selectedCards = $selectedCards.filter((r) => r !== req);
   }
+  //El parametro card esta cogiendo el valor declarado llamado req que esta en cmponente mas adelante.
+  const changeState = (card) => {
+    //hacer un filtrado de allCards para conseguir el card con el id que me interese, y se le cambia el el state de false a true o viceversa
+    const id = card.id;
+    const filtered = $allCardStats.filter(
+      (card) => card.id.toLowerCase() === id.toLowerCase()
+    );
+    {
+      card.state ? "true" : "false";
+      //card.state ? "false" : "true";
+    }
+    console.log("filtro prueba: ", id);
+    console.log(card.state);
+  };
+
   const init = () => {
     $allCardStats = $mock;
     $selectedCards = $allCardStats;
@@ -36,7 +50,11 @@
           </p>
           {#each $selectedCards.filter((t) => !t.state) as req (req.id)}
             <label receive={{ key: req.id }} send={{ key: req.id }}>
-              <input type="checkbox" bind:checked={req.state} />
+              <input
+                type="checkbox"
+                on:click={changeState(req)}
+                bind:checked={req.state}
+              />
               <CardStats
                 id={req.id}
                 type={req.type}
@@ -59,13 +77,14 @@
           >
             Requests Completadas
           </p>
-          <div
-            style="background-color: rgb(180, 240, 100);
-          "
-          >
+          <div>
             {#each $selectedCards.filter((t) => t.state) as req (req.id)}
               <label receive={{ key: req.id }} send={{ key: req.id }}>
-                <input type="checkbox" bind:checked={req.state} />
+                <input
+                  type="checkbox"
+                  on:click={changeState(req)}
+                  bind:checked={req.state}
+                />
                 <button class=" text-white" on:click={() => remove(req)}
                   >x</button
                 >

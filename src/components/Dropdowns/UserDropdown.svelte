@@ -68,11 +68,12 @@
       Log Out
     </a>
     <a
-      href="#pablo"
+      use:link
+      href="/settings"
       on:click={(e) => e.preventDefault()}
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Something else here
+      Setting
     </a>
     <div class="h-0 my-2 border border-solid border-blueGray-100" />
     <a
