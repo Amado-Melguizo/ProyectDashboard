@@ -24,6 +24,7 @@
 - (If not) Run in terminal `npm run dev`
 - Navigate to https://localhost:[the number of the localhost selected from your VSCode]
 
+
 ## Pages
 
 Here are all the page from the project:
@@ -67,7 +68,7 @@ The documentation for the Notus Svelte is hosted at our <a href="https://www.cre
 This is the project structure that you will get upon the download:
 
 ```
-Poyecto-Request-Notus
+Proyecto-Request-Notus
 .
 
 ```
