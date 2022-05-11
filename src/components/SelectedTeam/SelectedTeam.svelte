@@ -8,7 +8,7 @@
       (card) => card.team.toLowerCase() === team.toLowerCase()
     );
     $selectedCards = filtered;
-  };
+  }
 </script>
 
 <!-- svelte-ignore a11y-no-onchange -->

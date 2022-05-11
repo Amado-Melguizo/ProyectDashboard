@@ -2,9 +2,10 @@
   // core components
   import CardStats from "components/Cards/CardStats.svelte";
   import { allCardStats, selectedCards, mock } from "../../store";
-  import { onMount } from "svelte";
   import Counter from "../Counter/Counter.svelte";
   import Graph from "../Graph/Graph.svelte";
+  import { onMount } from "svelte";
+
   function remove(req) {
     $selectedCards = $selectedCards.filter((r) => r !== req);
   }
@@ -12,23 +13,20 @@
   const changeState = (card) => {
     //hacer un filtrado de allCards para conseguir el card con el id que me interese, y se le cambia el el state de false a true o viceversa
     const id = card.id;
-    const filtered = $allCardStats.filter(
-      (card) => card.id.toLowerCase() === id.toLowerCase()
-    );
-    {
-      card.state ? "true" : "false";
-      //card.state ? "false" : "true";
-    }
+    const filtered = $allCardStats.filter((card) => card.id === id);
+
+    card.state ? "true" : "false";
+
     console.log("filtro prueba: ", id);
     console.log(card.state);
   };
-
   const init = () => {
     $allCardStats = $mock;
     $selectedCards = $allCardStats;
   };
-
   onMount(init);
+  // init
+  $: $selectedCards = $mock;
 </script>
 
 <!-- Header -->
