@@ -26,11 +26,11 @@
 <div>
   <a
     class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-    href="#pablo"
+    href="#a"
     bind:this={btnDropdownRef}
     on:click={toggleDropdown}
   >
-    Demo Pages
+    Web Pages
   </a>
   <div
     bind:this={popoverDropdownRef}
@@ -57,7 +57,7 @@
     >
       Settings
     </a>
-
+    <div class="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
     <span
       class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
     >
@@ -65,7 +65,7 @@
     </span>
     <a
       use:link
-      href="/auth/login"
+      href="/"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
       Login
@@ -78,24 +78,5 @@
       Register
     </a>
     <div class="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-    <span
-      class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-    >
-      No Layout
-    </span>
-    <a
-      use:link
-      href="/landing"
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-    >
-      Landing
-    </a>
-    <a
-      use:link
-      href="/profile"
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-    >
-      Profile
-    </a>
   </div>
 </div>

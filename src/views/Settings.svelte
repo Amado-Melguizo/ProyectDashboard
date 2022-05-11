@@ -1,25 +1,3 @@
-<!-- <script>
-  // core components
-  import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
-  import CardSettings from "components/Cards/CardSettings.svelte";
-  import CardProfile from "components/Cards/CardProfile.svelte";
-  import FooterSmall from "components/Footers/FooterSmall.svelte";
-</script>
-
-<div>
-  <AuthNavbar />
-  <main>
-    <div class="flex flex-wrap">
-      <div class="w-full lg:w-8/12 px-4">
-        <CardSettings />
-      </div>
-      <div class="w-full lg:w-4/12 px-4">
-        <CardProfile />
-      </div>
-    </div>
-  </main>
-  <FooterSmall absolute="true" />
-</div> -->
 <script>
   // core components
   import AuthNavbar from "components/Navbars/AuthNavbar.svelte";

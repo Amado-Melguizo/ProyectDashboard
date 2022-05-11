@@ -12,6 +12,9 @@
   import Profile from "./views/Profile.svelte";
   import Settings from "./views/Settings.svelte";
 
+
+
+  
   export let url = "";
 </script>
 

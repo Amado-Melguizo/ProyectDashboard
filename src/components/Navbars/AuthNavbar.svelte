@@ -45,19 +45,6 @@
         <li class="flex items-center">
           <PagesDropdown />
         </li>
-
-        <li class="flex items-center">
-          <a
-            class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-            href="https://github.com/creativetimofficial/notus-svelte?ref=ns-auth-navbar"
-            target="_blank"
-          >
-            <i
-              class="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg"
-            />
-            <span class="lg:hidden inline-block ml-2">Star</span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>

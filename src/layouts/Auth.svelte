@@ -13,7 +13,6 @@
 </script>
 
 <div>
-  <AuthNavbar />
   <main>
     <section class="relative w-full h-full py-40 min-h-screen">
       <div

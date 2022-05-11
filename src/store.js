@@ -1,16 +1,38 @@
 import { writable } from "svelte/store";
-//import axios from "axios";
 
-// export const getRequest = async () => {
-//   try {
-//     const response = await axios.get(
-//       "https://decathlon.tpondemand.com/api/v1/Requests?access_token=Njg6S1lOeDNYcHNtZjdsN0h2K0c5QVdlakRaUW9LZGFpajJvU3dxNjFaa1Rvbz0=&format=json&skip=0&take=1000&where=Project.id in (6913) and EntityState.Name eq 'Aproved'"
-//     );
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+export const user = writable([
+  {
+    id: 1,
+    name: "amado",
+    surname: "melguizo",
+    email: "amado.melguizo@decathlon.com",
+    password: "amado",
+    state: null,
+  },
+]);
+export const getUserData = async (mail, pwd) => {
+  if (mail === user.email && pwd === user.password) return true;
+};
+
+export const userr = {
+  id: 2,
+  name: "",
+  surname: "",
+  email: "",
+  password: "",
+  state: null,
+};
+//////////////////////////////////////
+const name = "amado";
+const surname = "melguizo";
+const email = "amado.melguizo@decathlon.com";
+const password = "amado";
+
+export const userLog = writable(null);
+
+export const getUserDetails = async (mail, pwd) => {
+  if (mail === email && pwd === password) return true;
+};
 export const types = writable([
   { type: "PRIO1" },
   { type: "PRIO2" },
@@ -28,7 +50,7 @@ export const selectedCards = writable([]);
 
 export const mock = writable([
   {
-    id: "1",
+    id: 1,
     type: "PRIO 1",
     team: "dev",
     project: "Incidencia",
@@ -36,7 +58,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: "2",
+    id: 2,
     type: "PRIO 1",
     team: "AUX",
     project: "Incidencia",
@@ -44,7 +66,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: "3",
+    id: 3,
     type: "PRIO 1",
     team: "Dev",
     project: "Incidencia",
@@ -52,7 +74,7 @@ export const mock = writable([
     state: true,
   },
   {
-    id: "4",
+    id: 4,
     type: "PRIO 1",
     team: "AUX",
     project: "Incidencia",
@@ -60,7 +82,7 @@ export const mock = writable([
     state: false,
   },
   {
-    id: "5",
+    id: 5,
     type: "PRIO 1",
     team: "UAT",
     project: "Incidencia",
