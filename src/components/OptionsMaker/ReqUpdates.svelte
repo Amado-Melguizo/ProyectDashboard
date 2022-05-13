@@ -1,5 +1,5 @@
 <script>
-  import { mock } from "../../store";
+  import { allRequests } from "../../store";
   import Swal from "sweetalert2";
   import MakeReqBtn from "../Buttons/MakeReqBtn.svelte";
   export let statIconColor;
@@ -33,10 +33,10 @@
       state: false,
     };
 
-    $mock = $mock.concat(newMoc);
+    $allRequests = $allRequests.concat(newMoc);
 
     cleanReq();
-    console.log($mock);
+    console.log($allRequests);
   };
   const onSubmitHandler = () => {
     if (!editStatus) {

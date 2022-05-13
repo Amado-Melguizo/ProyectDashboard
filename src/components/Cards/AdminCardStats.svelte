@@ -11,7 +11,6 @@
   export let state = null;
   // can be any of the background color utilities
   // from tailwindcss
-  export let statIconName;
   export let statIconColor;
   import ReqUpdates from "../OptionsMaker/ReqUpdates.svelte";
 </script>
@@ -31,10 +30,12 @@
           {team}
         </h5>
       </div>
-      <div
-        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full {statIconColor}"
-      >
-        <i class={statIconName} />
+      <div class="relative w-auto pl-4 flex-initial">
+        <div
+          class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full {statIconColor}"
+        >
+          <ReqUpdates />
+        </div>
       </div>
     </div>
     <p class="text-sm text-blueGray-400 mt-4">

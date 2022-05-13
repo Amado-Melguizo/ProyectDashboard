@@ -1,42 +1,21 @@
 <script>
-  import { mock } from "../../store";
   import Swal from "sweetalert2";
 
   let editStatus = false;
 
-  export let Moc = {
-    id: "",
-    type: "",
-    team: "",
-    project: "",
-    description: "",
-    state: "",
-  };
+  let request = {};
+
   const cleanReq = () => {
-    Moc = {
-      id: "",
-      type: "",
-      team: "",
-      project: "",
-      description: "",
-      state: "",
-    };
+    request = {};
   };
+
+  $: console.log(request);
+
   const addReq = () => {
-    const newMoc = {
-      id: 6,
-      type: Moc.type,
-      team: Moc.team,
-      project: Moc.project,
-      description: Moc.description,
-      state: false,
-    };
-
-    $mock = $mock.concat(newMoc);
-
+    postRequest(request);
     cleanReq();
-    console.log($mock);
   };
+
   const onSubmitHandler = () => {
     if (!editStatus) {
       addReq();

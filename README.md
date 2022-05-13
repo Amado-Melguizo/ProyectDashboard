@@ -22,8 +22,7 @@
 - (If not) Run in terminal `npm run build:tailwind` (each time you add a new class, a class that does not exist in `src/assets/styles/tailwind.css`, you will need to run this command)
 - (If not) Run in terminal `npm run build:fontawesome`
 - (If not) Run in terminal `npm run dev`
-- Navigate to https://localhost:[the number of the localhost selected from your VSCode]
-
+- Navigate to http://localhost:5000
 
 ## Pages
 
@@ -68,7 +67,7 @@ The documentation for the Notus Svelte is hosted at our <a href="https://www.cre
 This is the project structure that you will get upon the download:
 
 ```
-Proyecto-Request-Notus
+webReqDash
 .
 
 ```

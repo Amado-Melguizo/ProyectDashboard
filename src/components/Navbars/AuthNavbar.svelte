@@ -1,51 +1,46 @@
 <script>
-  import { link } from "svelte-routing";
-
   // core components
-  import PagesDropdown from "components/Dropdowns/PagesDropdown.svelte";
-
-  let navbarOpen = false;
-
-  function setNavbarOpen() {
-    navbarOpen = !navbarOpen;
-  }
+  import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
+  import SelectedTeam from "../SelectedTeam/SelectedTeam.svelte";
+  import { allRequests } from "../../store";
 </script>
 
+<!-- Navbar -->
 <nav
-  class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+  class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4"
 >
   <div
-    class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+    class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4"
   >
-    <div
-      class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
-    >
-      <a
-        use:link
-        class="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-        href="/"
-      >
-        Request Dashboard
-      </a>
-      <button
-        class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-        type="button"
-        on:click={setNavbarOpen}
-      >
-        <i class="text-white fas fa-bars" />
-      </button>
+    <!-- Brand -->
+    <h1 class="text-white text-xl">Dashboard</h1>
+
+    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+      <SelectedTeam />
+      <!-- Boton para hacer saltar para crear nuevas Request -->
     </div>
-    <div
-      class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none rounded shadow-lg {navbarOpen
-        ? 'block'
-        : 'hidden'}"
-      id="example-navbar-warning"
+    <!-- Form -->
+    <form
+      class="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3"
     >
-      <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-        <li class="flex items-center">
-          <PagesDropdown />
-        </li>
-      </ul>
-    </div>
+      <div class="relative flex w-full flex-wrap items-stretch">
+        <span
+          class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
+        >
+          <i class="fas fa-search" />
+        </span>
+        <input
+          type="text"
+          placeholder="Search here..."
+          bind:value={$allRequests}
+          class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
+        />
+      </div>
+    </form>
+    <!-- User -->
+    <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+      <UserDropdown />
+    </ul>
   </div>
 </nav>
+<!-- End Navbar -->

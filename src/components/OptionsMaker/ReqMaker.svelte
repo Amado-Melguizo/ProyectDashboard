@@ -1,49 +1,30 @@
 <script>
-  import { mock } from "../../store";
   import Swal from "sweetalert2";
   import MakeReqBtn from "../Buttons/MakeReqBtn.svelte";
-  let editStatus = false;
-  let Moc = {
-    id: "",
-    type: "",
-    team: "",
-    project: "",
-    description: "",
-    state: "",
-  };
-  const cleanReq = () => {
-    Moc = {
-      id: "",
-      type: "",
-      team: "",
-      project: "",
-      description: "",
-      state: "",
-    };
-  };
-  const addReq = () => {
-    const newMoc = {
-      id: 6,
-      type: Moc.type,
-      team: Moc.team,
-      project: Moc.project,
-      description: Moc.description,
-      state: false,
-    };
+  import { postRequest } from "../ApiConf/ApiRequestConf";
 
-    $mock = $mock.concat(newMoc);
+  let editStatus = false;
+
+  let request = {};
+
+  const cleanReq = () => {
+    request = {};
+  };
+
+  $: console.log(request);
+
+  const addReq = () => {
+    postRequest(request);
 
     cleanReq();
-    console.log($mock);
   };
+
   const onSubmitHandler = () => {
     if (!editStatus) {
       addReq();
       Swal.fire("Request Creada!");
     }
   };
-
-  ////////////////////////////////////////////
 
   let showWindow = false;
 
@@ -109,7 +90,7 @@
                     required="required"
                     class="font-semibold rounded border-black"
                     id="type"
-                    bind:value={Moc.type}
+                    bind:value={request.type}
                   >
                     <option selected disabled>Tipo</option>
                     <!-- {#each $types as ty}
@@ -122,7 +103,7 @@
                   <select
                     class="font-semibold rounded"
                     id="team"
-                    bind:value={Moc.team}
+                    bind:value={request.team}
                     required="required"
                   >
                     <option selected disabled>Equipo</option>
@@ -143,7 +124,7 @@
                   </label>
                   <input
                     id="request-proyect"
-                    bind:value={Moc.project}
+                    bind:value={request.project}
                     type="text"
                     placeholder="Proyecto"
                     class="border-0 px-3 py-3 placeholder-blueGray-600 text-blueGray-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -159,7 +140,7 @@
                   </label>
                   <input
                     id="request-description"
-                    bind:value={Moc.description}
+                    bind:value={request.description}
                     type="text"
                     placeholder="Descripcion"
                     class="border-0 px-3 py-3 placeholder-blueGray-600 text-blueGray-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"

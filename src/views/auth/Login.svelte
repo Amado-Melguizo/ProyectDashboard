@@ -1,11 +1,10 @@
 <script>
   // components for this layout
-  import { userLog, getUserDetails, getUserData, user } from "../../store";
+  import { userVerify, allUsers } from "../../store";
+  import IndexNavbar from "components/Navbars/IndexNavbar.svelte";
   import { link } from "svelte-routing";
   import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
   import FooterSmall from "components/Footers/FooterSmall.svelte";
-
-  import EyePWD from "../../components/Buttons/EyePWD.svelte";
 
   // core components
   const github = "../assets/img/github.svg";
@@ -28,44 +27,45 @@
       }
     });
   });
+  ///////////////////////////////////////////////////////////////
 
   let mail = "";
   let pwd = "";
   let error = "";
-  console.log($user);
-  // async function login() {
-  //   user.email = await getUserData(mail, pwd);
-
-  //   if (user.email) {
-  //     console.log(user.email);
-  //     $user.state = user.email;
-
-  //     if (error) error = "";
-  //   } else {
-  //     error = "Incorrect username or password.";
-  //     console.log("Incorrect username or password.");
-  //   }
-  // }
-  //////////////////////////
 
   async function login() {
-    const email = await getUserDetails(mail, pwd);
+    $allUsers.email = await userVerify(mail, pwd);
 
-    if (email) {
-      console.log(email);
-      $userLog = email;
+    if ($allUsers.email) {
+      console.log($allUsers.email);
+      $allUsers.state = $allUsers.email;
+
       if (error) error = "";
     } else {
       error = "Incorrect username or password.";
       console.log("Incorrect username or password.");
     }
   }
+  //////////////////////////
+
+  // async function login() {
+  //   const email = await getUserDetails(mail, pwd);
+
+  //   if (email) {
+  //     console.log(email);
+  //     $userLog = email;
+  //     if (error) error = "";
+  //   } else {
+  //     error = "Incorrect username or password.";
+  //     console.log("Incorrect username or password.");
+  //   }
+  // }
 
   const registerBg2 = "../assets/img/register_bg_2.png";
 </script>
 
 <div>
-  <AuthNavbar />
+  <IndexNavbar />
   <main>
     <section class="relative w-full h-full py-40 min-h-screen">
       <div

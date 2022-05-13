@@ -1,50 +1,29 @@
 <script>
   import { link } from "svelte-routing";
-  import { user } from "../../store";
+  import { allUsers } from "../../store";
 
-  console.log($user);
+  console.log($allUsers);
 
   let editStatus = false;
+  let error = "";
 
-  let userr = {
-    id: "",
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    state: "",
-  };
+  let password = {};
 
   const cleanPassword = () => {
-    userr = {
-      id: "",
-      name: "",
-      surname: "",
-      email: "",
-      password: "",
-      state: null,
-    };
+    password = {};
   };
-  const updatePassword = () => {
-    let updatedPassword = {
-      id: userr.id,
-      name: userr.name,
-      surname: userr.surname,
-      email: userr.email,
-      password: userr.password,
-      state: userr.state,
-    };
-    const userIndex = $user.findIndex((u) => u.id === userr.id);
-    $user[userIndex] = updatedPassword;
+  const changePassword = () => {
+    const userIndex = $allUsers.findIndex((u) => u.id === $allUsers.id);
+    $allUsers[userIndex] = updatedPassword;
+    updatePassword(password);
     cleanPassword();
-    console.log($user);
     editStatus = false;
   };
   const onSubmitHandler = () => {
     if (!editStatus) {
-      updatePassword();
+      changePassword();
     } else {
-      error = "Incorrect Information.";
+      error = "Las claves deben coincidir.";
     }
   };
 </script>
@@ -115,9 +94,9 @@
                 placeholder="Confirm Password"
               />
             </div>
-            <small id="emailHelp" class="form-text text-muted"
-              >Las claves deben coincidir</small
-            >
+            <div id="error_message" class="text-danger">
+              <small>{error}</small>
+            </div>
             <div class="text-center mt-6">
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"

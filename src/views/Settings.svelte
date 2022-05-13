@@ -1,6 +1,6 @@
 <script>
   // core components
-  import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
+  import IndexNavbar from "components/Navbars/IndexNavbar.svelte";
   import Footer from "components/Footers/Footer.svelte";
   import CardSettings from "components/Cards/CardSettings.svelte";
   import CardProfile from "components/Cards/CardProfile.svelte";
@@ -8,7 +8,7 @@
 </script>
 
 <div>
-  <AuthNavbar />
+  <IndexNavbar />
   <main class="profile-page">
     <section class="relative block h-500-px">
       <div

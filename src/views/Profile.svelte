@@ -1,13 +1,13 @@
 <script>
   // core components
-  import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
+  import IndexNavbar from "components/Navbars/IndexNavbar.svelte";
   import Footer from "components/Footers/Footer.svelte";
-
+  import { allUsers } from "../store";
   const team2 = "/assets/img/team-2-800x800.jpg";
 </script>
 
 <div>
-  <AuthNavbar />
+  <IndexNavbar />
   <main class="profile-page">
     <section class="relative block h-500-px">
       <div
@@ -19,7 +19,7 @@
         <span
           id="blackOverlay"
           class="w-full h-full absolute opacity-50 bg-black"
-        ></span>
+        />
       </div>
       <div
         class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
@@ -37,7 +37,7 @@
           <polygon
             class="text-blueGray-200 fill-current"
             points="2560 0 2560 100 0 100"
-          ></polygon>
+          />
         </svg>
       </div>
     </section>
@@ -52,7 +52,7 @@
                 <div class="relative">
                   <img
                     alt="..."
-                    src="{team2}"
+                    src={team2}
                     class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                   />
                 </div>
@@ -102,20 +102,22 @@
               <h3
                 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"
               >
-                Jenna Stones
+                {$allUsers.name}
               </h3>
               <div
                 class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase"
               >
-                <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                <i
+                  class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"
+                />
                 Los Angeles, California
               </div>
               <div class="mb-2 text-blueGray-600 mt-10">
-                <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400" />
                 Solution Manager - Creative Tim Officer
               </div>
               <div class="mb-2 text-blueGray-600">
-                <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+                <i class="fas fa-university mr-2 text-lg text-blueGray-400" />
                 University of Computer Science
               </div>
             </div>

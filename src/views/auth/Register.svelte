@@ -1,47 +1,29 @@
 <script>
-  import { user } from "../../store";
+  import { postUser } from "../../components/ApiConf/ApiUserConf";
   import { link } from "svelte-routing";
 
   let editStatus = false;
-  let userr = {
-    id: 2,
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    state: null,
-  };
-  const cleanUser = () => {
-    userr = {
-      id: "",
-      name: "",
-      surname: "",
-      email: "",
-      password: "",
-      state: "",
-    };
-  };
-  const addUser = () => {
-    const newUserr = {
-      id: userr.id,
-      name: userr.name,
-      surname: userr.surname,
-      email: userr.email,
-      password: userr.password,
-      state: userr.state,
-    };
 
-    $user = $user.concat(newUserr);
+  let error = "";
+
+  let user = {};
+
+  const cleanUser = () => {
+    user = {};
+  };
+
+  $: console.log(user);
+
+  const addUser = () => {
+    postUser(user);
 
     cleanUser();
-    console.log($user);
   };
   const onSubmitHandler = () => {
     if (!editStatus) {
-      console.log($user);
       addUser();
     } else {
-      error = "Incorrect Information.";
+      error = "Las claves deben coincidir.";
     }
   };
 </script>
@@ -52,14 +34,14 @@
       <div
         class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
       >
-        <div class="rounded-t mb-0 px-6 py-6">
+        <div class="rounded-t mb-0 px-6 py-4">
           <p>
             Already have an account?
             <a href="/" use:link><strong>Login</strong></a>
           </p>
-          <hr class="mt-6 border-b-1 border-blueGray-300" />
+          <hr class="mt-3 border-b-1 border-blueGray-300" />
         </div>
-        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <div class="lg:px-10 py-10 pt-0">
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small>Create a new account</small>
           </div>
@@ -74,7 +56,7 @@
               </label>
               <input
                 id="login-name"
-                bind:value={userr.name}
+                bind:value={user.name}
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Name"
@@ -90,7 +72,7 @@
               </label>
               <input
                 id="login-surname"
-                bind:value={userr.surname}
+                bind:value={user.surname}
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Surname"
@@ -106,7 +88,7 @@
               </label>
               <input
                 id="login-email"
-                bind:value={userr.email}
+                bind:value={user.email}
                 type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Email"
@@ -122,7 +104,7 @@
                 Password
               </label>
               <input
-                bind:value={userr.password}
+                bind:value={user.password}
                 type="password"
                 name="password"
                 class="form-control password1 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -144,9 +126,9 @@
                 placeholder="Password"
                 required
               />
-              <small id="emailHelp" class="form-text text-muted"
-                >Las claves deben coincidir</small
-              >
+              <div id="error_message" class="text-danger">
+                <small>{error}</small>
+              </div>
             </div>
 
             <div>
@@ -169,7 +151,7 @@
               </label>
             </div>
 
-            <div class="text-center mt-6">
+            <div class="text-center mt-3">
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                 type="submit"

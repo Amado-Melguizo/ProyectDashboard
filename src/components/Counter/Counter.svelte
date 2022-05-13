@@ -1,7 +1,7 @@
 <script>
-  import { selectedCards } from "../../store";
+  import { allRequests } from "../../store";
   export let count = 0;
-  $: count = $selectedCards.length;
+  $: count = $allRequests.length;
 </script>
 
 <div

@@ -1,32 +1,28 @@
 <script>
   // core components
-  import CardStats from "components/Cards/CardStats.svelte";
-  import { allCardStats, selectedCards, mock } from "../../store";
+  import AdminCardStats from "components/Cards/AdminCardStats.svelte";
+  import { selectedRequests, allRequests } from "../../store";
   import Counter from "../Counter/Counter.svelte";
   import Graph from "../Graph/Graph.svelte";
-  import { onMount } from "svelte";
+  import { deleteRequest } from "../ApiConf/ApiRequestConf";
 
-  function remove(req) {
-    $selectedCards = $selectedCards.filter((r) => r !== req);
+  function removeCard(req) {
+    $allRequests = $allRequests.filter((r) => r !== req);
   }
-  //El parametro card esta cogiendo el valor declarado llamado req que esta en cmponente mas adelante.
-  const changeState = (card) => {
-    //hacer un filtrado de allCards para conseguir el card con el id que me interese, y se le cambia el el state de false a true o viceversa
-    const id = card.id;
-    const filtered = $allCardStats.filter((card) => card.id === id);
+  //El parametro req esta cogiendo el valor declarado llamado req que esta en cmponente mas adelante.
+  const changeState = (req) => {
+    //hacer un filtrado de allCards para conseguir el req con el id que me interese, y se le cambia el el state de false a true o viceversa
+    const id = req.id;
+    const filtered = $allRequests.filter((req) => req.id === id);
 
-    card.state ? "true" : "false";
+    req.state ? "true" : "false";
 
-    console.log("filtro prueba: ", id);
-    console.log(card.state);
+    console.log("ID tarjeta ", id);
+    console.log(req.state);
   };
-  const init = () => {
-    $allCardStats = $mock;
-    $selectedCards = $allCardStats;
-  };
-  onMount(init);
+
   // init
-  $: $selectedCards = $mock;
+  $: $selectedRequests = $allRequests;
 </script>
 
 <!-- Header -->
@@ -36,6 +32,7 @@
       <Counter />
     </div>
     <br />
+
     <div>
       <!-- Card stats -->
       <div class="flex" style="height: 900px;">
@@ -46,14 +43,14 @@
           >
             Requests Activas
           </p>
-          {#each $selectedCards.filter((t) => !t.state) as req (req.id)}
+          {#each $selectedRequests.filter((t) => !t.state) as req (req.id)}
             <label receive={{ key: req.id }} send={{ key: req.id }}>
               <input
                 type="checkbox"
                 on:click={changeState(req)}
                 bind:checked={req.state}
               />
-              <CardStats
+              <AdminCardStats
                 id={req.id}
                 type={req.type}
                 team={req.team}
@@ -76,17 +73,20 @@
             Requests Completadas
           </p>
           <div>
-            {#each $selectedCards.filter((t) => t.state) as req (req.id)}
+            {#each $selectedRequests.filter((t) => t.state) as req (req.id)}
               <label receive={{ key: req.id }} send={{ key: req.id }}>
                 <input
                   type="checkbox"
                   on:click={changeState(req)}
                   bind:checked={req.state}
                 />
-                <button class=" text-white" on:click={() => remove(req)}
+                <button class=" text-white" on:click={() => removeCard(req)}
                   >x</button
                 >
-                <CardStats
+                <button class=" text-white" on:click={() => deleteRequest(req)}
+                  >x</button
+                >
+                <AdminCardStats
                   id={req.id}
                   type={req.type}
                   team={req.team}
@@ -101,6 +101,7 @@
             {/each}
           </div>
         </div>
+
         <div class="w-full lg:w-6/12 xl:w-3/13 px-4">
           <p
             class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 lg:w-6/10 xl:w-3/13 px-4 shadow-lg"

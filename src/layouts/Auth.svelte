@@ -1,29 +1,14 @@
 <script>
-  import { Router, Route } from "svelte-routing";
-
   // components for this layout
-  import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
-  import FooterSmall from "components/Footers/FooterSmall.svelte";
-
-  // pages for this layout
-  import Register from "views/auth/Register.svelte";
-  import Password from "views/auth/ForgotPassword.svelte";
-
-  const registerBg2 = "../assets/img/register_bg_2.png";
+  import AuthNavbar from "components/Navbars/AdminNavbar.svelte";
+  import Sidebar from "components/Sidebar/Sidebar.svelte";
+  import AuthHeaderStats from "components/Headers/AdminHeaderStats.svelte";
 </script>
 
 <div>
-  <main>
-    <section class="relative w-full h-full py-40 min-h-screen">
-      <div
-        class="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"
-        style="background-image: url({registerBg2});"
-      />
-      <Router url="auth">
-        <Route path="register" component={Register} />
-        <Route path="pasword" component={Password} />
-      </Router>
-      <FooterSmall absolute="true" />
-    </section>
-  </main>
+  <Sidebar />
+  <div class="relative md:ml-64 bg-blueGray-100">
+    <AuthNavbar />
+    <AuthHeaderStats />
+  </div>
 </div>

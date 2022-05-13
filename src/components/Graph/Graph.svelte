@@ -1,12 +1,15 @@
 <script>
-  import { allTeams } from "../../store";
+  import { allRequests, allTeams } from "../../store";
   import Chart from "svelte-frappe-charts/src/components/base.svelte";
   //Funcion para convertir el array de datos a strings
   $: data = {
     labels: getTeams,
     datasets: [
       {
-        values: [2, 2, 1],
+        //const getAvailableID = () => $mock[$mock.length - 1].id + 1;
+        //$allRequests[$allRequests.length[0]].team
+        // values: [$allRequests[$allRequests.length[0]].team, $allRequests.length, $allRequests.length],
+        values: [1, 2, 3],
       },
     ],
   };
