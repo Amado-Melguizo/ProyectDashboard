@@ -1,7 +1,7 @@
 <script>
   // core components
   import FilterCardBar from "../FilterCardBar/FilterCardBar.svelte";
-  import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
+  import AdminDropdown from "components/Dropdowns/AdminDropdown.svelte";
   import SelectedTeam from "../SelectedTeam/SelectedTeam.svelte";
   import ReqMaker from "../OptionsMaker/ReqMaker.svelte";
 </script>
@@ -37,7 +37,7 @@
     </form>
     <!-- User -->
     <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-      <UserDropdown />
+      <AdminDropdown />
     </ul>
   </div>
 </nav>

@@ -8,6 +8,7 @@
         return date.toLowerCase().startsWith(prefix.toLowerCase());
       })
     : $allRequests;
+  console.log(prefix);
 </script>
 
 <input

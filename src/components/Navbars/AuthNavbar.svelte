@@ -1,8 +1,8 @@
 <script>
   // core components
+  import FilterCardBar from "../FilterCardBar/FilterCardBar.svelte";
   import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
   import SelectedTeam from "../SelectedTeam/SelectedTeam.svelte";
-  import { allRequests } from "../../store";
 </script>
 
 <!-- Navbar -->
@@ -17,7 +17,6 @@
 
     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
       <SelectedTeam />
-      <!-- Boton para hacer saltar para crear nuevas Request -->
     </div>
     <!-- Form -->
     <form
@@ -29,12 +28,8 @@
         >
           <i class="fas fa-search" />
         </span>
-        <input
-          type="text"
-          placeholder="Search here..."
-          bind:value={$allRequests}
-          class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
-        />
+
+        <FilterCardBar />
       </div>
     </form>
     <!-- User -->

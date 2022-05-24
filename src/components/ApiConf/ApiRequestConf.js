@@ -6,7 +6,7 @@ export const getRequest = async () => {
 
     return response.data;
   } catch (error) {
-    console.error(error);
+    console.error("Revisar si la api esta encendida , sino: ", error);
   }
 };
 
@@ -22,10 +22,12 @@ export const postRequest = async (newRequest) => {
   }
 };
 
-export const deleteRequest = async () => {
+export const deleteRequest = async (requestId) => {
   try {
-    const response = await axios.delete("http://localhost:3000/request");
-    return response.data;
+    const response = await axios.delete(
+      `http://localhost:3000/request/${requestId}`
+    );
+    return response;
   } catch (error) {
     console.error(error);
   }

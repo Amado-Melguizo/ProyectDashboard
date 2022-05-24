@@ -1,31 +1,59 @@
 <script>
   import { link } from "svelte-routing";
-  import { allUsers } from "../../store";
-
-  console.log($allUsers);
+  import { user } from "../../store";
+  import { updateUser, verifyUser } from "../../components/ApiConf/ApiUserConf";
+  console.log($user);
 
   let editStatus = false;
   let error = "";
+  let confirmPassword = "";
+  let loginEmail = "";
+  let loginPass = "";
 
-  let password = {};
+  let newpassword = "";
 
   const cleanPassword = () => {
-    password = {};
+    newpassword = {};
   };
-  const changePassword = () => {
-    const userIndex = $allUsers.findIndex((u) => u.id === $allUsers.id);
-    $allUsers[userIndex] = updatedPassword;
-    updatePassword(password);
+  function changePassword() {
+    updateUser(newpassword);
     cleanPassword();
     editStatus = false;
-  };
-  const onSubmitHandler = () => {
+  }
+
+  async function onSubmitHandler() {
     if (!editStatus) {
-      changePassword();
-    } else {
-      error = "Las claves deben coincidir.";
+      console.log(loginEmail, loginPass);
+      $user = await verifyUser(loginEmail, loginPass);
+      console.log($user);
+      console.log(user.password);
+      console.log(confirmPassword, "=", newpassword);
+
+      if (!$user) {
+        loginError = "Incorrect username or password.";
+      } else {
+        if (newpassword === confirmPassword) {
+          console.log($user);
+          changePassword();
+          console.log($user);
+        } else {
+          error = "Las claves deben coincidir.";
+        }
+      }
     }
-  };
+  }
+
+  // if (!$user) {
+  //   loginError = "Incorrect username or password.";
+  // } else {
+  //   console.log(confirmPassword, "=", user.password);
+
+  //   if (user.password === confirmPassword) {
+  //     changePassword();
+  //   } else {
+  //     error = "Las claves deben coincidir.";
+  //   }
+  // }
 </script>
 
 <div class="container mx-auto px-4 h-full">
@@ -49,14 +77,32 @@
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="email"
+              >
+                Email
+              </label>
+              <input
+                required
+                name="email"
+                type="email"
+                bind:value={loginEmail}
+                id="loginEmail"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Email"
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 for="grid-name"
               >
                 Actual Password
               </label>
               <input
                 required
-                id="pwd"
+                id="loginPass"
                 type="password"
+                bind:value={loginPass}
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Actual Password"
               />
@@ -70,8 +116,9 @@
                 New Password
               </label>
               <input
+                bind:value={newpassword}
                 required
-                id="password"
+                id="newpassword"
                 type="password"
                 class="form-control password1 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="New Password"
@@ -86,8 +133,9 @@
                 Confirm New Password
               </label>
               <input
+                bind:value={confirmPassword}
                 required
-                id="grid-password"
+                id="newpassword"
                 type="password"
                 name="password2"
                 class="form-control password2 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"

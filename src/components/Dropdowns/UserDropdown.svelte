@@ -6,7 +6,7 @@
 
   // core components
 
-  const image = "../assets/img/team-1-800x800.jpg";
+  const image = "../assets/img/amado.jpg";
 
   let dropdownPopoverShow = false;
 
@@ -69,7 +69,7 @@
     </a>
     <a
       use:link
-      href="/settings"
+      href="/settingsAuth"
       on:click={(e) => e.preventDefault()}
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >

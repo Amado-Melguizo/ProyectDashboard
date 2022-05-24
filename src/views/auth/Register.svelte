@@ -3,13 +3,16 @@
   import { link } from "svelte-routing";
 
   let editStatus = false;
-
+  let confirmPassword = "";
   let error = "";
 
-  let user = {};
+  let user = {
+    rol: "user",
+  };
 
   const cleanUser = () => {
     user = {};
+    confirmPassword = "";
   };
 
   $: console.log(user);
@@ -21,9 +24,15 @@
   };
   const onSubmitHandler = () => {
     if (!editStatus) {
-      addUser();
-    } else {
-      error = "Las claves deben coincidir.";
+      console.log(user.password);
+
+      console.log(confirmPassword);
+
+      if (user.password === confirmPassword) {
+        addUser();
+      } else {
+        error = "Las claves deben coincidir.";
+      }
     }
   };
 </script>
@@ -87,8 +96,8 @@
                 Email
               </label>
               <input
-                id="login-email"
-                bind:value={user.email}
+                id="login-email-id"
+                bind:value={user.id}
                 type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Email"
@@ -110,8 +119,9 @@
                 class="form-control password1 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
                 required
-              /> <span class="fa fa-fw fa-eye password-icon show-password" />
-
+              />
+            </div>
+            <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 for="grid-password"
@@ -119,10 +129,11 @@
                 Confirm Password
               </label>
               <input
+                bind:value={confirmPassword}
                 id="grid-password"
                 type="password"
-                name="password2"
-                class="form-control password2 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                name="confirmPassword"
+                class="form-control confirmPassword border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
                 required
               />
@@ -131,7 +142,7 @@
               </div>
             </div>
 
-            <div>
+            <!-- <div>
               <label class="inline-flex items-center cursor-pointer">
                 <input
                   id="customCheckLogin"
@@ -149,7 +160,7 @@
                   </a>
                 </span>
               </label>
-            </div>
+            </div> -->
 
             <div class="text-center mt-3">
               <button

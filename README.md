@@ -12,22 +12,36 @@
 
 ## Get Started
 
-- Install NodeJS **LTS** version from <a href="https://nodejs.org/en/?ref=creativetim">NodeJs Official Page</a>
-- Download the product on this page
-- Unzip the downloaded file to a folder in your computer
-- Open Terminal
-- Go to your file project (where you’ve unzipped the product)
-- (If you are on a linux based terminal) Simply run `npm run install:clean`
-- (If not) Run in terminal `npm install`
-- (If not) Run in terminal `npm run build:tailwind` (each time you add a new class, a class that does not exist in `src/assets/styles/tailwind.css`, you will need to run this command)
-- (If not) Run in terminal `npm run build:fontawesome`
-- (If not) Run in terminal `npm run dev`
-- Navigate to http://localhost:5000
+## Webpage
+
+- Install the Webpage
+  - Install NodeJS **LTS** version from <a href="https://nodejs.org/en/">NodeJs Official Page</a>
+  - Download the product on this page
+  - Unzip the downloaded file to a folder in your computer
+  - Open VSCode and go to your file project (where you’ve unzipped the product)
+  - Go to VSCode terminal and write `npm install`
+  - Then, run in terminal `npm run dev`
+  - Navigate to http://localhost:5000
+
+## ApiPage
+
+- Install The Api to use the page.
+  - Go to [ApiDashboard](https://github.com/Amado-Melguizo/ProyectDashboardApi.git)
+  - Download the product on that page
+  - Unzip the downloaded file to a folder in your computer
+  - Open VSCode and go to your file project (where you’ve unzipped the product)
+  - Go to VSCode terminal and write `npm install`
+  - Next, run in terminal `npm install -g json-server`
+  - Then, run in terminal `json-server --watch db.json`
+  - Navigate to http://localhost:3000
 
 ## Pages
 
-Here are all the page from the project:
+Here are all the pages from the project:
 
+- Auth Pages
+  - [Dashboard]
+  - [Settings]
 - Admin Pages
   - [Dashboard]
   - [Settings]
@@ -36,7 +50,7 @@ Here are all the page from the project:
   - [Login]
   - [Register]
 - Presentation Samples
-  - [Landing(Login page)]
+  - [Index(Login page)]
   - [Profile]
 
 ## CSS Components

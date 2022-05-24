@@ -1,9 +1,9 @@
 <script>
   // components for this layout
-  import { userVerify, allUsers } from "../../store";
+  import { user } from "../../store";
+  import { verifyUser } from "../../components/ApiConf/ApiUserConf";
   import IndexNavbar from "components/Navbars/IndexNavbar.svelte";
   import { link } from "svelte-routing";
-  import AuthNavbar from "components/Navbars/AuthNavbar.svelte";
   import FooterSmall from "components/Footers/FooterSmall.svelte";
 
   // core components
@@ -16,51 +16,29 @@
     let showPassword = document.querySelector(".show-password");
     showPassword.addEventListener("click", () => {
       // elementos input de tipo clave
-      let password1 = document.querySelector(".password1");
+      let password = document.querySelector(".password");
 
-      if (password1.type === "text") {
-        password1.type = "password";
+      if (password.type === "text") {
+        password.type = "password";
         showPassword.classList.remove("fa-eye-slash");
       } else {
-        password1.type = "text";
+        password.type = "text";
         showPassword.classList.toggle("fa-eye-slash");
       }
     });
   });
   ///////////////////////////////////////////////////////////////
 
-  let mail = "";
-  let pwd = "";
-  let error = "";
+  let loginEmail = "";
+  let loginPass = "";
+  let loginError = "";
 
   async function login() {
-    $allUsers.email = await userVerify(mail, pwd);
-
-    if ($allUsers.email) {
-      console.log($allUsers.email);
-      $allUsers.state = $allUsers.email;
-
-      if (error) error = "";
-    } else {
-      error = "Incorrect username or password.";
-      console.log("Incorrect username or password.");
+    $user = await verifyUser(loginEmail, loginPass);
+    if (!$user) {
+      loginError = "Incorrect username or password.";
     }
   }
-  //////////////////////////
-
-  // async function login() {
-  //   const email = await getUserDetails(mail, pwd);
-
-  //   if (email) {
-  //     console.log(email);
-  //     $userLog = email;
-  //     if (error) error = "";
-  //   } else {
-  //     error = "Incorrect username or password.";
-  //     console.log("Incorrect username or password.");
-  //   }
-  // }
-
   const registerBg2 = "../assets/img/register_bg_2.png";
 </script>
 
@@ -108,7 +86,7 @@
                   <div class="relative w-full mb-3">
                     <label
                       class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                      for="mail"
+                      for="email"
                     >
                       Email
                     </label>
@@ -116,8 +94,8 @@
                       required
                       name="email"
                       type="email"
-                      bind:value={mail}
-                      id="mail"
+                      bind:value={loginEmail}
+                      id="loginEmail"
                       class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
                     />
@@ -134,9 +112,9 @@
                       required
                       name="password"
                       type="password"
-                      id="pwd"
-                      bind:value={pwd}
-                      class="form-control password1 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      id="loginPass"
+                      bind:value={loginPass}
+                      class="form-control password border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
                     /><span
                       class="fa fa-fw fa-eye password-icon show-password"
@@ -151,7 +129,7 @@
                     </button>
                   </div>
                   <div id="error_message" class="text-danger">
-                    <small>{error}</small>
+                    <small>{loginError}</small>
                   </div>
                 </form>
               </div>

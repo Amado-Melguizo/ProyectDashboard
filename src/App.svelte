@@ -1,10 +1,9 @@
 <!-- App.svelte -->
 <script>
   import { Router, Route } from "svelte-routing";
-  import { allRequests, allUsers } from "../src/store";
+  import { allRequests } from "../src/store";
   import { onMount } from "svelte";
   import { getRequest } from "./components/ApiConf/ApiRequestConf";
-  import { getUser } from "../src/components/ApiConf/ApiUserConf";
 
   // Admin Layout
   import Admin from "./layouts/Admin.svelte";
@@ -15,15 +14,15 @@
   // No Layout Pages
   import Index from "./views/Index.svelte";
   import Profile from "./views/Profile.svelte";
-  import Settings from "./views/Settings.svelte";
+  import SettingsAdmin from "./views/SettingsAdmin.svelte";
+  import SettingsAuth from "./views/SettingsAuth.svelte";
+
   export let url = "";
 
   $: console.log($allRequests);
-  $: console.log($allUsers);
 
   onMount(async () => {
     $allRequests = await getRequest();
-    $allUsers = await getUser();
   });
 </script>
 
@@ -35,5 +34,6 @@
   <!-- no layout pages -->
   <Route path="/" component={Index} />
   <Route path="profile" component={Profile} />
-  <Route path="settings" component={Settings} />
+  <Route path="settingsAdmin" component={SettingsAdmin} />
+  <Route path="settingsAuth" component={SettingsAuth} />
 </Router>

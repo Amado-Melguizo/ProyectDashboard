@@ -92,7 +92,7 @@
         <li class="items-center">
           <a
             use:link
-            href="/admin/settings"
+            href="/settingsAdmin"
             class="text-xs uppercase py-3 font-bold block {location.href.indexOf(
               '/admin/settings'
             ) !== -1
