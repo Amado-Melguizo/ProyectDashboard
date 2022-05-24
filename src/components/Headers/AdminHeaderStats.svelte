@@ -4,14 +4,12 @@
   import { selectedRequests, allRequests } from "../../store";
   import Counter from "../Counter/Counter.svelte";
   import Graph from "../Graph/Graph.svelte";
-  import { deleteRequest } from "../ApiConf/ApiRequestConf";
+  import { deleteRequest, getRequest } from "../ApiConf/ApiRequestConf";
 
-  function removeCard(req) {
-    $allRequests = $allRequests.filter((r) => r !== req);
-  }
   //El parametro req esta cogiendo el valor declarado llamado req que esta en cmponente mas adelante.
   const changeState = (req) => {
-    //hacer un filtrado de allCards para conseguir el req con el id que me interese, y se le cambia el el state de false a true o viceversa
+    //hacer un filtrado de allCards para conseguir el req con el id que me interese, 
+    //y se le cambia el el state de false a true o viceversa
     const id = req.id;
     const filtered = $allRequests.filter((req) => req.id === id);
 
@@ -80,11 +78,16 @@
                   on:click={changeState(req)}
                   bind:checked={req.state}
                 />
-                <button class=" text-white" on:click={() => removeCard(req)}
-                  >x</button
-                >
-                <button class=" text-white" on:click={() => deleteRequest(req)}
-                  >x</button
+
+                <button
+                  class=" text-white"
+                  on:click={async () => {
+                    const response = await deleteRequest(req.id);
+                    console.log(response);
+                    if (response.status === 200) {
+                      $allRequests = await getRequest();
+                    }
+                  }}>x</button
                 >
                 <AdminCardStats
                   id={req.id}

@@ -2,8 +2,9 @@
   // core components
   import IndexNavbar from "components/Navbars/IndexNavbar.svelte";
   import Footer from "components/Footers/Footer.svelte";
+  import CardSettings from "components/Cards/CardSettings.svelte";
   import AdminCardProfile from "components/Cards/AdminCardProfile.svelte";
-  const image = "/assets/img/amado.jpg";
+  const team2 = "/assets/img/team-2-800x800.jpg";
 </script>
 
 <div>
@@ -43,7 +44,22 @@
     </section>
     <section class="relative py-16 bg-blueGray-200">
       <div class="container mx-auto px-4">
-        <AdminCardProfile />
+        <div
+          class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+        >
+          <div class="px-6">
+            <div class="flex flex-wrap justify-center">
+              <div class="flex flex-wrap">
+                <div class="w-full py-10 lg:w-8/12 px-4">
+                  <CardSettings />
+                </div>
+                <div class="w-full py-40 lg:w-4/12 ">
+                  <AdminCardProfile />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>

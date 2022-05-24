@@ -1,12 +1,24 @@
 <script>
   // core components
   import CardStats from "components/Cards/CardStats.svelte";
-  import { allRequests } from "../../store";
+  import { selectedRequests, allRequests } from "../../store";
   import Counter from "../Counter/Counter.svelte";
   import Graph from "../Graph/Graph.svelte";
 
+  //El parametro req esta cogiendo el valor declarado llamado req que esta en cmponente mas adelante.
+  const changeState = (req) => {
+    //hacer un filtrado de allCards para conseguir el req con el id que me interese, y se le cambia el el state de false a true o viceversa
+    const id = req.id;
+    const filtered = $allRequests.filter((req) => req.id === id);
+
+    req.state ? "true" : "false";
+
+    console.log("ID tarjeta ", id);
+    console.log(req.state);
+  };
+
   // init
-  $: $allRequests;
+  $: $selectedRequests = $allRequests;
 </script>
 
 <!-- Header -->
@@ -16,6 +28,7 @@
       <Counter />
     </div>
     <br />
+
     <div>
       <!-- Card stats -->
       <div class="flex" style="height: 900px;">
@@ -26,30 +39,13 @@
           >
             Requests Activas
           </p>
-          {#each $allRequests.filter((t) => !t.state) as req (req.id)}
-            <CardStats
-              id={req.id}
-              type={req.type}
-              team={req.team}
-              project={req.project}
-              description={req.description}
-              state={req.state}
-              statIconName="fas fa-file"
-              statIconColor="bg-emerald-500"
-            />
-            <br />
-          {/each}
-        </div>
-
-        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
-          <p
-            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 lg:w-6/10 xl:w-3/13 px-4 shadow-lg"
-            style="text-align: center;"
-          >
-            Requests Completadas
-          </p>
-          <div>
-            {#each $allRequests.filter((t) => t.state) as req (req.id)}
+          {#each $selectedRequests.filter((t) => !t.state) as req (req.id)}
+            <label receive={{ key: req.id }} send={{ key: req.id }}>
+              <input
+                type="checkbox"
+                on:click={changeState(req)}
+                bind:checked={req.state}
+              />
               <CardStats
                 id={req.id}
                 type={req.type}
@@ -61,9 +57,42 @@
                 statIconColor="bg-emerald-500"
               />
               <br />
+            </label>
+          {/each}
+        </div>
+
+        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+          <p
+            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 lg:w-6/10 xl:w-3/13 px-4 shadow-lg"
+            style="text-align: center;"
+          >
+            Requests Completadas
+          </p>
+          <div>
+            {#each $selectedRequests.filter((t) => t.state) as req (req.id)}
+              <label receive={{ key: req.id }} send={{ key: req.id }}>
+                <input
+                  type="checkbox"
+                  on:click={changeState(req)}
+                  bind:checked={req.state}
+                />
+
+                <CardStats
+                  id={req.id}
+                  type={req.type}
+                  team={req.team}
+                  project={req.project}
+                  description={req.description}
+                  state={req.state}
+                  statIconName="fas fa-file"
+                  statIconColor="bg-emerald-500"
+                />
+                <br />
+              </label>
             {/each}
           </div>
         </div>
+
         <div class="w-full lg:w-6/12 xl:w-3/13 px-4">
           <p
             class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 lg:w-6/10 xl:w-3/13 px-4 shadow-lg"

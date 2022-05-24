@@ -5,7 +5,9 @@
 
   let editStatus = false;
 
-  let request = {};
+  let request = {
+    state: "",
+  };
 
   const cleanReq = () => {
     request = {};
@@ -15,7 +17,7 @@
 
   const addReq = () => {
     postRequest(request);
-
+    console.log(request);
     cleanReq();
   };
 
@@ -73,7 +75,7 @@
               <h1
                 class="bg-red-400 text-white active:bg-red-500 px-4 py-2 rounded shadow "
               >
-                Panel de Control Final
+                Panel de Request
               </h1>
             </div>
           </div>
@@ -87,7 +89,6 @@
               <div class="flex flex-wrap">
                 <div class="relative flex-auto">
                   <select
-                    required="required"
                     class="font-semibold rounded border-black"
                     id="type"
                     bind:value={request.type}
@@ -104,7 +105,6 @@
                     class="font-semibold rounded"
                     id="team"
                     bind:value={request.team}
-                    required="required"
                   >
                     <option selected disabled>Equipo</option>
                     <option value="Dev">Dev</option>
@@ -114,6 +114,8 @@
                       <option value={team}>{team.team}</option>
                     {/each} -->
                   </select>
+                  <!-- <option -Abind:value={request.type}
+                  value="false"></option> -->
                   <br />
                   <br />
                   <label
@@ -152,9 +154,9 @@
                     class="background-transparent border border-solid border-black font-bold uppercase px-3 py-2 text-sm rounded shadow "
                     type="submit"
                   >
-                    {#if !editStatus}Crear F{/if}
+                    {#if !editStatus}Crear{/if}
                   </button>
-                  <MakeReqBtn />
+                  <!-- <MakeReqBtn /> -->
                   <button
                     class="text-red-500 background-transparent border border-solid border-black font-bold uppercase px-3 py-2 text-sm rounded shadow "
                     type="button"

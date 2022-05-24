@@ -1,9 +1,12 @@
 <script>
   import { link } from "svelte-routing";
+
   // library for creating dropdown menu appear on click
   import { createPopper } from "@popperjs/core";
 
   // core components
+
+  const image = "../assets/img/amado.jpg";
 
   let dropdownPopoverShow = false;
 
@@ -25,12 +28,22 @@
 
 <div>
   <a
-    class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-    href="#a"
+    class="text-blueGray-500 block"
+    href="#pablo"
     bind:this={btnDropdownRef}
     on:click={toggleDropdown}
   >
-    Web Pages
+    <div class="items-center flex">
+      <span
+        class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
+      >
+        <img
+          alt="..."
+          class="w-full rounded-full align-middle border-none shadow-lg"
+          src={image}
+        />
+      </span>
+    </div>
   </a>
   <div
     bind:this={popoverDropdownRef}
@@ -38,45 +51,37 @@
       ? 'block'
       : 'hidden'}"
   >
-    <span
-      class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-    >
-      Admin Layout
-    </span>
     <a
       use:link
-      href="/admin/dashboard"
+      href="/profile"
+      on:click={(e) => e.preventDefault()}
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Dashboard
+      Profile
+    </a>
+    <a
+      use:link
+      href="/"
+      on:click={(e) => e.preventDefault()}
+      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+    >
+      Log Out
     </a>
     <a
       use:link
       href="/settingsAdmin"
+      on:click={(e) => e.preventDefault()}
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Settings
+      Setting
     </a>
-    <div class="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-    <span
-      class="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-    >
-      Auth Layout
-    </span>
+    <div class="h-0 my-2 border border-solid border-blueGray-100" />
     <a
-      use:link
-      href="/"
+      href="#pablo"
+      on:click={(e) => e.preventDefault()}
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Login
+      Seprated link
     </a>
-    <a
-      use:link
-      href="/auth/register"
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-    >
-      Register
-    </a>
-    <div class="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
   </div>
 </div>

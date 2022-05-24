@@ -1,14 +1,9 @@
 import { writable } from "svelte/store";
 
 //Datos sacados de Api de las request
-export const allUsers = writable([]);
-
-export const userVerify = async (mail, pwd) => {
-  if (mail === user.email && pwd === user.password) return true;
-};
+export const user = writable({});
 
 //Datos sacados de Api de las request
-
 export const filteredRequest = writable([]);
 
 export const allRequests = writable([]);
