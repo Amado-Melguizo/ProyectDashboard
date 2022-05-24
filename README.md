@@ -11,9 +11,7 @@
 - [Licensing](#licensing)
 
 ## Get Started
-
 ## Webpage
-
 - Install the Webpage
   - Install NodeJS **LTS** version from <a href="https://nodejs.org/en/">NodeJs Official Page</a>
   - Download the product on this page
@@ -24,21 +22,19 @@
   - Navigate to http://localhost:5000
 
 ## ApiPage
-
 - Install The Api to use the page.
   - Go to [ApiDashboard](https://github.com/Amado-Melguizo/ProyectDashboardApi.git)
   - Download the product on that page
   - Unzip the downloaded file to a folder in your computer
   - Open VSCode and go to your file project (where you’ve unzipped the product)
   - Go to VSCode terminal and write `npm install`
-  - Next, run in terminal `npm install -g json-server`
+  - Next, run in terminal `npm install -g json-server` 
   - Then, run in terminal `json-server --watch db.json`
   - Navigate to http://localhost:3000
 
 ## Pages
 
 Here are all the pages from the project:
-
 - Auth Pages
   - [Dashboard]
   - [Settings]
