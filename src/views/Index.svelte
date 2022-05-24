@@ -8,7 +8,7 @@
 <!-- {#if $user.id}
   <Admin />
   <Auth />
-{:else}
+{:else} 
   <Login />
 {/if} -->
 
