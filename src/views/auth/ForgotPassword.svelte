@@ -2,58 +2,43 @@
   import { link } from "svelte-routing";
   import { user } from "../../store";
   import { updateUser, verifyUser } from "../../components/ApiConf/ApiUserConf";
-  console.log($user);
 
   let editStatus = false;
   let error = "";
-  let confirmPassword = "";
+
   let loginEmail = "";
   let loginPass = "";
+  let loginError = "";
 
   let newpassword = "";
+  let confirmPassword = "";
 
   const cleanPassword = () => {
     newpassword = {};
   };
-  function changePassword() {
-    updateUser(newpassword);
-    cleanPassword();
-    editStatus = false;
-  }
 
   async function onSubmitHandler() {
     if (!editStatus) {
-      console.log(loginEmail, loginPass);
       $user = await verifyUser(loginEmail, loginPass);
-      console.log($user);
-      console.log(user.password);
-      console.log(confirmPassword, "=", newpassword);
 
       if (!$user) {
         loginError = "Incorrect username or password.";
       } else {
+        console.log(newpassword);
         if (newpassword === confirmPassword) {
           console.log($user);
-          changePassword();
+          updateUser(newpassword);
+          console.log(newpassword);
           console.log($user);
+          cleanPassword();
+          console.log(newpassword);
+          editStatus = false;
         } else {
           error = "Las claves deben coincidir.";
         }
       }
     }
   }
-
-  // if (!$user) {
-  //   loginError = "Incorrect username or password.";
-  // } else {
-  //   console.log(confirmPassword, "=", user.password);
-
-  //   if (user.password === confirmPassword) {
-  //     changePassword();
-  //   } else {
-  //     error = "Las claves deben coincidir.";
-  //   }
-  // }
 </script>
 
 <div class="container mx-auto px-4 h-full">
@@ -119,7 +104,7 @@
                 bind:value={newpassword}
                 required
                 id="newpassword"
-                type="password"
+                type="text"
                 class="form-control password1 border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="New Password"
               />
